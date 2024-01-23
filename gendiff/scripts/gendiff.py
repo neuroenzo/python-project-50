@@ -18,18 +18,19 @@ def generate_diff(file1, file2):
         second_source = json.load(f2)
 
         keys = sorted(set(first_source.keys()) | set(second_source.keys()))
-        print("{")
+        result = "{\n"
         for key in keys:
             if key in first_source and key not in second_source:
-                print(f'- {key}', ':', str(first_source[key]).lower())
+                result += f'- {key}: {str(first_source[key]).lower()}\n'
             elif key in second_source and key not in first_source:
-                print(f'+ {key}', ':', str(second_source[key]).lower())
+                result += f'+ {key}: {str(second_source[key]).lower()}\n'
             elif key in first_source and key in second_source and first_source[key] != second_source[key]:
-                print(f'- {key}', ':', first_source[key])
-                print(f'+ {key}', ':', second_source[key])
+                result += f'- {key}: {first_source[key]}\n+ {key}: {second_source[key]}\n'
             elif key in first_source and key in second_source:
-                print(f'  {key}', ':', first_source[key])
-        print("}")
+                result += f'  {key}: {first_source[key]}\n'
+        result += "}"
+
+        print(result)
 
 
 def main():
