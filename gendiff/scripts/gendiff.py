@@ -5,8 +5,12 @@ import os
 from pathlib import Path
 
 
-first_file = os.path.join(Path(__file__).resolve().parent.parent, 'files/file1.json')
-second_file = os.path.join(Path(__file__).resolve().parent.parent, 'files/file2.json')
+first_file = os.path.join(Path(__file__)
+                          .resolve().parent.parent.parent,
+                          'tests/fixtures/flat1.json')
+second_file = os.path.join(Path(__file__)
+                           .resolve().parent.parent.parent,
+                           'tests/fixtures/flat2.json')
 
 
 def generate_diff(file1, file2):
@@ -24,13 +28,17 @@ def generate_diff(file1, file2):
                 result += f'- {key}: {str(first_source[key]).lower()}\n'
             elif key in second_source and key not in first_source:
                 result += f'+ {key}: {str(second_source[key]).lower()}\n'
-            elif key in first_source and key in second_source and first_source[key] != second_source[key]:
-                result += f'- {key}: {first_source[key]}\n+ {key}: {second_source[key]}\n'
+            elif key in first_source and key in second_source\
+                    and first_source[key] != second_source[key]:
+                result += f'- {key}: {first_source[key]}\n+' \
+                          f' {key}: {second_source[key]}\n'
             elif key in first_source and key in second_source:
                 result += f'  {key}: {first_source[key]}\n'
         result += "}"
 
         print(result)
+
+        return result
 
 
 def main():
