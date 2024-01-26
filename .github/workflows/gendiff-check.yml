@@ -8,9 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run linter
-        run:
-          make lint
-      - name: Run tests
-        run:
-          make tests
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          make install
+      - name: Run linter and pytest
+        run: |
+          make check
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v5.0.0
+        if: github.ref_name == 'main'
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

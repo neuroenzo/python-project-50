@@ -13,10 +13,18 @@ package-install:
 lint:
 	poetry run flake8 gendiff
 
-tests:
-	poetry run pytest -v -s -l tests
+test:
+	poetry run pytest -v -s -l
+
+selfcheck:
+	poetry check
+
+check: selfcheck test lint
+
+build: check
+	poetry build
 
 gendiff:
 	poetry run gendiff
 
-.PHONY: install build publish package-install lint tests gendiff
+.PHONY: install build publish package-install lint test selfcheck check  gendiff
