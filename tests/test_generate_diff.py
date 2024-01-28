@@ -15,7 +15,9 @@ control = """{
 @pytest.mark.parametrize(
     'flat1, flat2',
     [('./tests/fixtures/flat1.json',
-      './tests/fixtures/flat2.json')]
+      './tests/fixtures/flat2.json'),
+     ('./tests/fixtures/flat1.yml',
+      './tests/fixtures/flat2.yml')]
 )
 def test_generate_diff(flat1, flat2):
     diff = generate_diff(flat1, flat2)
