@@ -10,8 +10,7 @@ def open_file(file_name):
                  join(Path(__file__)
                       .resolve()
                       .parent
-                      .parent
-                      ,
+                      .parent,
                       f'tests/fixtures/{file_name}'))
     with open(file_path) as f:
         data = f.read()
