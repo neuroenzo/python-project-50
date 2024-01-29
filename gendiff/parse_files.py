@@ -5,7 +5,7 @@ import yaml
 from pathlib import Path
 
 
-def open_file(file_name):
+def define_file_type(file_name):
     file_path = (os.path.
                  join(Path(__file__)
                       .resolve()
@@ -22,8 +22,8 @@ def open_file(file_name):
 
 
 def generate_diff(file1, file2):
-    first_source = open_file(file1)
-    second_source = open_file(file2)
+    first_source = define_file_type(file1)
+    second_source = define_file_type(file2)
 
     keys = sorted(set(first_source.keys()) | set(second_source.keys()))
 
