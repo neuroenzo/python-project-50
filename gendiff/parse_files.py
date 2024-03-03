@@ -25,7 +25,6 @@ def build_source_tree(first_source, second_source):
                     'status': 'added',
                     'key': key,
                     'value': second_source.get(key),
-
                 }
             )
         elif key not in second_source.keys():
@@ -36,13 +35,16 @@ def build_source_tree(first_source, second_source):
                     'value': first_source.get(key)
                 }
             )
-        elif isinstance(first_source.get(key), dict) and isinstance(second_source.get(key), dict):
+        elif (isinstance(first_source.get(key), dict)
+              and isinstance(second_source.get(key), dict)):
             tree.append(
                 {
                     'status': 'nested',
                     'key': key,
-                    'value': build_source_tree(first_source.get(key), second_source.get(key))
-
+                    'value': build_source_tree(
+                        first_source.get(key),
+                        second_source.get(key)
+                    )
                 }
             )
         elif first_source.get(key) == second_source.get(key):
