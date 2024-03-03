@@ -1,15 +1,7 @@
 import pytest
 
-from gendiff.scripts.gendiff import generate_diff
-
-control_file = """{
-- follow: false
-  host: hexlet.io
-- proxy: 123.234.53.22
-- timeout: 50
-+ timeout: 20
-+ verbose: true
-}"""
+from fixtures.correct_flat import correct_flat_structure
+from gendiff import generate_diff
 
 
 @pytest.mark.parametrize(
@@ -21,4 +13,4 @@ control_file = """{
 )
 def test_generate_diff(flat1, flat2):
     diff = generate_diff(flat1, flat2)
-    assert diff == control_file
+    assert diff == correct_flat_structure

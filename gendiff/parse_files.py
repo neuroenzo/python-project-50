@@ -1,46 +1,73 @@
 import json
-import os
 import yaml
 
 from pathlib import Path
 
 
 def define_file_type(file_name):
-    file_path = (os.path.
-                 join(Path(__file__)
-                      .resolve()
-                      .parent
-                      .parent,
-                      f'tests/fixtures/{file_name}'))
-    with open(file_path) as f:
+    with open(file_name) as f:
         data = f.read()
-    match Path(file_path).suffix:
+    match Path(file_name).suffix:
         case '.json':
             return json.loads(data)
-        case '.yml':
+        case '.yml' | '.yaml':
             return yaml.safe_load(data)
 
 
-def generate_diff(file1, file2):
-    first_source = define_file_type(file1)
-    second_source = define_file_type(file2)
+def build_source_tree(first_source, second_source):
+    tree = []
+    keys = sorted(first_source.keys() | second_source.keys())
 
-    keys = sorted(set(first_source.keys()) | set(second_source.keys()))
-
-    result = "{\n"
     for key in keys:
-        if key in first_source and key not in second_source:
-            result += f'- {key}: {str(first_source[key]).lower()}\n'
-        elif key in second_source and key not in first_source:
-            result += f'+ {key}: {str(second_source[key]).lower()}\n'
-        elif key in first_source and key in second_source\
-                and first_source[key] != second_source[key]:
-            result += f'- {key}: {first_source[key]}\n+' \
-                      f' {key}: {second_source[key]}\n'
-        elif key in first_source and key in second_source:
-            result += f'  {key}: {first_source[key]}\n'
-    result += "}"
+        if key not in first_source.keys():
+            tree.append(
+                {
+                    'status': 'added',
+                    'key': key,
+                    'value': second_source.get(key),
 
-    print(result)
+                }
+            )
+        elif key not in second_source.keys():
+            tree.append(
+                {
+                    'status': 'deleted',
+                    'key': key,
+                    'value': first_source.get(key)
+                }
+            )
+        elif isinstance(first_source.get(key), dict) and isinstance(second_source.get(key), dict):
+            tree.append(
+                {
+                    'status': 'nested',
+                    'key': key,
+                    'value': build_source_tree(first_source.get(key), second_source.get(key))
 
-    return result
+                }
+            )
+        elif first_source.get(key) == second_source.get(key):
+            tree.append(
+                {
+                    'status': 'unchanged',
+                    'key': key,
+                    'value': first_source.get(key)
+                }
+            )
+        else:
+            tree.append(
+                {
+                    'status': 'changed',
+                    'key': key,
+                    'old value': first_source.get(key),
+                    'new value': second_source.get(key)
+                }
+            )
+
+    return tree
+
+
+def generate_diff(first_file, second_file):
+    first_source = define_file_type(first_file)
+    second_source = define_file_type(second_file)
+
+    return build_source_tree(first_source, second_source)
