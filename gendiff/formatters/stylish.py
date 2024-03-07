@@ -16,7 +16,7 @@ def generate_stylish_format(data_tree):
         elif item['status'] == 'deleted':
             result[f"{MINUS}{item['key']}"] = item['value']
         elif item['status'] == 'unchanged':
-            result[f"{INDENTS}{item['key']}"] = item['value']
+            result[f"{item['key']}"] = item['value']
         elif item['status'] == 'changed':
             result[f"{MINUS}{item['key']}"] = item['old value']
             result[f"{PLUS}{item['key']}"] = item['new value']
@@ -25,8 +25,17 @@ def generate_stylish_format(data_tree):
 
 
 def stylish_formatter(diff):
-    return (json.dumps(
-        generate_stylish_format(diff), indent=4)
-            .replace('"', "")
-            .replace(",", "")
-            )
+    result = []
+    new_dumps = (json.dumps(
+        generate_stylish_format(diff),
+        separators=("", ": "),
+        indent=4)
+        .replace('"', "")
+         )
+    for item in new_dumps.split('\n'):
+        if item.lstrip().startswith(('+', '-')):
+            result.append(item[2:])
+        else:
+            result.append(item)
+
+    return '\n'.join(result)
