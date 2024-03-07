@@ -1,5 +1,3 @@
-
-
 import pytest
 
 from fixtures.correct_flat import correct_flat_structure
@@ -8,14 +6,13 @@ from gendiff import generate_diff
 from gendiff.formatters.stylish import stylish_formatter
 
 
-
 @pytest.mark.parametrize(
     'flat1, flat2',
-    [('flat1.json',
-      'flat2.json')]
+    [('fixtures/flat1.json',
+      'fixtures/flat2.json')]
 )
 def test_generate_flat_diff(flat1, flat2):
-    diff = generate_diff(file_name_1, file_name_2)
+    diff = generate_diff(flat1, flat2)
     assert stylish_formatter(diff) == correct_flat_structure
 
 
