@@ -19,7 +19,7 @@ def test_generate_flat_diff(flat1, flat2):
 @pytest.mark.parametrize(
     'nested1, nested2',
     [('./tests/fixtures/nested1.json',
-      './tests/fixtures/fixtures/nested2.json'),
+      './tests/fixtures/nested2.json'),
      ('./tests/fixtures/nested1.json',
       './tests/fixtures/nested2.yml'),
      ('./tests/fixtures/nested1.yaml',
