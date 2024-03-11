@@ -8,3 +8,6 @@
 
 ### Comparison of flat files (YAML):
 [![asciicast](https://asciinema.org/a/2e2ygaB3TAU27aPP2xa8SxjTr.png)](https://asciinema.org/a/2e2ygaB3TAU27aPP2xa8SxjTr)
+
+### Comparison of nested files (JSON):
+[![asciicast](https://asciinema.org/a/NOFmWcJFnLXjPLpYijbLjKHDk.png)](https://asciinema.org/a/NOFmWcJFnLXjPLpYijbLjKHDk)
