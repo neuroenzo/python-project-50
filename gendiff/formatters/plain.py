@@ -6,17 +6,26 @@ def plain_formatter(source, path=None):
         status = item['status']
         bread_crumbs_path = path + (item['key'], )
         if status == 'nested':
-            result.append(plain_formatter(item['value'], bread_crumbs_path))
+            result.append(
+                plain_formatter(item['value'], bread_crumbs_path)
+            )
         elif status == 'added':
-            result.append(f"Property '{correct_plain_conclusion(bread_crumbs_path)}'"
-                          f" was added with value:"
-                          f" {correct_plain(item['value'])}")
+            result.append(
+                f"Property '{correct_plain_conclusion(bread_crumbs_path)}'"
+                f" was added with value:"
+                f" {correct_plain(item['value'])}"
+            )
         elif status == 'deleted':
-            result.append(f"Property '{correct_plain_conclusion(bread_crumbs_path)}' was removed")
+            result.append(
+                f"Property '{correct_plain_conclusion(bread_crumbs_path)}'"
+                f" was removed")
         elif status == 'changed':
-            result.append(f"Property '{correct_plain_conclusion(bread_crumbs_path)}' was updated."
-                          f" From {correct_plain(item['old value'])}"
-                          f" to {correct_plain(item['new value'])}")
+            result.append(
+                f"Property '{correct_plain_conclusion(bread_crumbs_path)}'"
+                f" was updated."
+                f" From {correct_plain(item['old value'])}"
+                f" to {correct_plain(item['new value'])}"
+            )
 
     return '\n'.join(result)
 
