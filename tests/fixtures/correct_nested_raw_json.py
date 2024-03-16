@@ -1,0 +1,117 @@
+correct_nested_raw_json = \
+"""[
+    {
+        "status": "nested",
+        "key": "common",
+        "value": [
+            {
+                "status": "added",
+                "key": "follow",
+                "value": false
+            },
+            {
+                "status": "unchanged",
+                "key": "setting1",
+                "value": "Value 1"
+            },
+            {
+                "status": "deleted",
+                "key": "setting2",
+                "value": 200
+            },
+            {
+                "status": "changed",
+                "key": "setting3",
+                "old value": true,
+                "new value": null
+            },
+            {
+                "status": "added",
+                "key": "setting4",
+                "value": "blah blah"
+            },
+            {
+                "status": "added",
+                "key": "setting5",
+                "value": {
+                    "key5": "value5"
+                }
+            },
+            {
+                "status": "nested",
+                "key": "setting6",
+                "value": [
+                    {
+                        "status": "nested",
+                        "key": "doge",
+                        "value": [
+                            {
+                                "status": "changed",
+                                "key": "wow",
+                                "old value": "",
+                                "new value": "so much"
+                            }
+                        ]
+                    },
+                    {
+                        "status": "unchanged",
+                        "key": "key",
+                        "value": "value"
+                    },
+                    {
+                        "status": "added",
+                        "key": "ops",
+                        "value": "vops"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "status": "nested",
+        "key": "group1",
+        "value": [
+            {
+                "status": "changed",
+                "key": "baz",
+                "old value": "bas",
+                "new value": "bars"
+            },
+            {
+                "status": "unchanged",
+                "key": "foo",
+                "value": "bar"
+            },
+            {
+                "status": "changed",
+                "key": "nest",
+                "old value": {
+                    "key": "value"
+                },
+                "new value": "str"
+            }
+        ]
+    },
+    {
+        "status": "deleted",
+        "key": "group2",
+        "value": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        }
+    },
+    {
+        "status": "added",
+        "key": "group3",
+        "value": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        }
+    }
+]"""

@@ -3,8 +3,9 @@ import yaml
 
 from pathlib import Path
 
-from gendiff.formatters.plain import plain_formatter
-from gendiff.formatters.stylish import stylish_formatter
+from gendiff.formatters.json import make_raw_json
+from gendiff.formatters.plain import make_plain_formatter
+from gendiff.formatters.stylish import make_stylish_formatter
 
 
 def define_file_type(file_name):
@@ -76,11 +77,15 @@ def generate_diff(first_file, second_file, format_name):
     second_source = define_file_type(second_file)
 
     if format_name == 'stylish':
-        return stylish_formatter(
+        return make_stylish_formatter(
             build_source_tree(first_source, second_source)
         )
     elif format_name == 'plain':
-        return plain_formatter(
+        return make_plain_formatter(
+            build_source_tree(first_source, second_source)
+        )
+    elif format_name == 'json':
+        return make_raw_json(
             build_source_tree(first_source, second_source)
         )
     else:

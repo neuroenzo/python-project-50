@@ -1,4 +1,4 @@
-def plain_formatter(source, path=None):
+def make_plain_formatter(source, path=None):
     if path is None:
         path = ()
     result = []
@@ -7,7 +7,7 @@ def plain_formatter(source, path=None):
         bread_crumbs_path = path + (item['key'], )
         if status == 'nested':
             result.append(
-                plain_formatter(item['value'], bread_crumbs_path)
+                make_plain_formatter(item['value'], bread_crumbs_path)
             )
         elif status == 'added':
             result.append(
