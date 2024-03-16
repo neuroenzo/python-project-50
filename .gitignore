@@ -2,5 +2,9 @@
 .venv
 dist/
 gendiff/__pycache__/
-gendiff/scripts/__pycache__/
+gendiff/scripts/__pycache__
+gendiff/formatters/__pycache__/
 tests/__pycache__/
+tests/fixtures/__pycache__/
+
+

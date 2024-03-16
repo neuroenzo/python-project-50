@@ -47,7 +47,6 @@ def display_like_json(structure, depth):
             return str(structure).lower()
         case None:
             return 'null'
-
         case dict():
             result = ['{']
             for key, value in structure.items():
