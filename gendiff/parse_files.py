@@ -3,6 +3,9 @@ import yaml
 
 from pathlib import Path
 
+from gendiff.formatters.plain import plain_formatter
+from gendiff.formatters.stylish import stylish_formatter
+
 
 def define_file_type(file_name):
     with open(file_name) as f:
@@ -68,8 +71,13 @@ def build_source_tree(first_source, second_source):
     return tree
 
 
-def generate_diff(first_file, second_file):
+def generate_diff(first_file, second_file, format_name):
     first_source = define_file_type(first_file)
     second_source = define_file_type(second_file)
 
-    return build_source_tree(first_source, second_source)
+    if format_name == 'stylish':
+        return stylish_formatter(build_source_tree(first_source, second_source))
+    elif format_name == 'plain':
+        return plain_formatter(build_source_tree(first_source, second_source))
+    else:
+        raise TypeError(f'{format_name} is not available format')
