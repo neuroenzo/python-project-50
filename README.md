@@ -9,7 +9,7 @@ Program that determines the difference between data structures in two files
 
 ### Main features:
 - Supporting of two type of files: json and yaml
-- Generate reports in next formats: stylish, plain and raw json 
+- Generate reports in next formats: stylish, plain text and raw json 
 
 ### Installation:
 - install poetry
