@@ -11,3 +11,6 @@
 
 ### Comparison of nested files in plain format (JSON):
 [![asciicast](https://asciinema.org/a/9VTvOn01Rdc0ShWMFFhWR6HBz.png)](https://asciinema.org/a/9VTvOn01Rdc0ShWMFFhWR6HBz)
+
+### Comparison of flat and nested files in raw json format:
+[![asciicast](https://asciinema.org/a/pHko78OXOpyXf62DoFNNfgXef.png)](https://asciinema.org/a/pHko78OXOpyXf62DoFNNfgXef)
