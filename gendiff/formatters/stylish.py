@@ -3,14 +3,14 @@ PLUS = '+ '
 MINUS = '- '
 
 
-def stylish_formatter(source, depth=1):
+def make_stylish_formatter(source, depth=1):
     result = ['{']
     for item in source:
         match item['status']:
             case 'nested':
                 result.append(
                     f"{INDENTS*2*depth}{item['key']}:"
-                    f" {stylish_formatter(item['value'], depth+1)}"
+                    f" {make_stylish_formatter(item['value'], depth + 1)}"
                 )
             case 'added':
                 result.append(
