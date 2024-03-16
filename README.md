@@ -4,7 +4,7 @@
 <a href="https://codeclimate.com/github/neuroenzo/python-project-50/maintainability"><img src="https://api.codeclimate.com/v1/badges/b2c1e8c36178514b7d79/maintainability" /></a>
 
 ### Comparison of flat files (JSON):
-[![asciicast](https://asciinema.org/a/vENffEMxBda4ybqMeK1wg6qTv.png)](https://asciinema.org/a/vENffEMxBda4ybqMeK1wg6qTv)
+[![asciicast](https://asciinema.org/a/u0OXcxg6kxsoDKibWAaeTqWlL.png)](https://asciinema.org/a/u0OXcxg6kxsoDKibWAaeTqWlL)
 
 ### Comparison of nested files in stylish format (JSON):
 [![asciicast](https://asciinema.org/a/NOFmWcJFnLXjPLpYijbLjKHDk.png)](https://asciinema.org/a/NOFmWcJFnLXjPLpYijbLjKHDk)
