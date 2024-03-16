@@ -17,7 +17,6 @@ Program that determines the difference between data structures in two files
 - help: gendiff -h
 - launch command: gendiff [format] [filepath1] [filepath2]
 
-
 ### Comparison of flat files (JSON):
 [![asciicast](https://asciinema.org/a/u0OXcxg6kxsoDKibWAaeTqWlL.png)](https://asciinema.org/a/u0OXcxg6kxsoDKibWAaeTqWlL)
 
