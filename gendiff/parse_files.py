@@ -76,8 +76,12 @@ def generate_diff(first_file, second_file, format_name):
     second_source = define_file_type(second_file)
 
     if format_name == 'stylish':
-        return stylish_formatter(build_source_tree(first_source, second_source))
+        return stylish_formatter(
+            build_source_tree(first_source, second_source)
+        )
     elif format_name == 'plain':
-        return plain_formatter(build_source_tree(first_source, second_source))
+        return plain_formatter(
+            build_source_tree(first_source, second_source)
+        )
     else:
         raise TypeError(f'{format_name} is not available format')
