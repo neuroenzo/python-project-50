@@ -1,5 +1,4 @@
-correct_nested_raw_json = \
-"""[
+correct_nested_raw_json = """[
     {
         "status": "nested",
         "key": "common",

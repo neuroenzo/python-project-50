@@ -11,7 +11,7 @@ correct_nested_stylish_structure = """{
         }
         setting6: {
             doge: {
-              - wow: 
+              - wow:
               + wow: so much
             }
             key: value
