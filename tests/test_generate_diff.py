@@ -62,7 +62,7 @@ def test_generate_nested_plain_diff(nested1, nested2, plain_format):
       './tests/fixtures/flat2.json',
       'json')]
 )
-def test_generate_nested_json_diff(flat1, flat2, raw_json_format):
+def test_generate_flat_json_diff(flat1, flat2, raw_json_format):
     diff = generate_diff(flat1, flat2, raw_json_format)
 
     assert diff == correct_flat_raw_json
