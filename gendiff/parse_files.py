@@ -72,7 +72,7 @@ def build_source_tree(first_source, second_source):
     return tree
 
 
-def generate_diff(first_file, second_file, format_name):
+def generate_diff(first_file, second_file, format_name='stylish'):
     first_source = define_file_type(first_file)
     second_source = define_file_type(second_file)
 
