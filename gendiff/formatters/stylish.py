@@ -19,7 +19,7 @@ def make_stylish_formatter(source, depth=1):
                 )
             case 'deleted':
                 result.append(
-                    f"{INDENTS * (2 * depth -  1)}{MINUS}{item['key']}:"
+                    f"{INDENTS * (2 * depth - 1)}{MINUS}{item['key']}:"
                     f" {display_like_json(item['value'], depth + 1)}"
                 )
             case 'unchanged':
@@ -36,7 +36,7 @@ def make_stylish_formatter(source, depth=1):
                     f"{INDENTS * (2 * depth - 1)}{PLUS}{item['key']}:"
                     f" {display_like_json(item['new value'], depth + 1)}"
                 )
-    result.append(f'{INDENTS*2*(depth-1)}}}')
+    result.append(f'{INDENTS * 2 * (depth - 1)}}}')
 
     return '\n'.join(result)
 
