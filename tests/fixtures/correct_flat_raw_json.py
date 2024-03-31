@@ -1,5 +1,4 @@
-correct_flat_raw_json = """
-[
+correct_flat_raw_json = """[
     {
         "status": "deleted",
         "key": "follow",
