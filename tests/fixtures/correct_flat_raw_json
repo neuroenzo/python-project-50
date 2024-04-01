@@ -1,4 +1,4 @@
-correct_flat_raw_json = """[
+[
     {
         "status": "deleted",
         "key": "follow",
@@ -25,4 +25,4 @@ correct_flat_raw_json = """[
         "key": "verbose",
         "value": true
     }
-]"""
+]
