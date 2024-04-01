@@ -1,4 +1,4 @@
-correct_nested_stylish_structure = """{
+{
     common: {
       + follow: false
         setting1: Value 1
@@ -41,4 +41,4 @@ correct_nested_stylish_structure = """{
         }
         fee: 100500
     }
-}"""
+}

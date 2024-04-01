@@ -1,4 +1,4 @@
-correct_nested_raw_json = """[
+[
     {
         "status": "nested",
         "key": "common",
@@ -113,4 +113,4 @@ correct_nested_raw_json = """[
             "fee": 100500
         }
     }
-]"""
+]
