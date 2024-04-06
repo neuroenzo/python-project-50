@@ -1,96 +1,112 @@
 import pytest
 
 from gendiff import generate_diff
+import os
+
+
+def form_path_to_test_file(file):
+    return os.path.abspath(
+        f'fixtures/{file}'
+    )
 
 
 @pytest.mark.parametrize(
-    'flat1, flat2, stylish_format',
-    [('./tests/fixtures/flat1.json',
-      './tests/fixtures/flat2.json',
-      'stylish')]
+    'nested1,'
+    'nested2,'
+    'stylish_format,'
+    'correct_nested_stylish',
+    [('nested1.json',
+      'nested2.json',
+      'stylish',
+      'correct_nested_stylish'),
+     ('nested1.json',
+      'nested2.yml',
+      'stylish',
+      'correct_nested_stylish'),
+     ('nested1.yaml',
+      'nested2.yml',
+      'stylish',
+      'correct_nested_stylish')]
 )
-def test_generate_flat_stylish_diff(flat1, flat2, stylish_format):
-    diff = generate_diff(flat1, flat2, stylish_format)
+def test_generating_nested_stylish_diff(nested1,
+                                        nested2,
+                                        stylish_format,
+                                        correct_nested_stylish):
+    diff = generate_diff(
+        form_path_to_test_file(nested1),
+        form_path_to_test_file(nested2),
+        stylish_format
+    )
 
-    with open('./tests/fixtures/correct_flat_stylish', 'r') as file:
+    with open(form_path_to_test_file(correct_nested_stylish), 'r') as file:
         correct_structure = file.read()
 
         assert diff == correct_structure
 
 
 @pytest.mark.parametrize(
-    'nested1, nested2, stylish_format',
-    [('./tests/fixtures/nested1.json',
-      './tests/fixtures/nested2.json',
-      'stylish'),
-     ('./tests/fixtures/nested1.json',
-      './tests/fixtures/nested2.yml',
-      'stylish'),
-     ('./tests/fixtures/nested1.yaml',
-      './tests/fixtures/nested2.yml',
-      'stylish')]
+    'nested1,'
+    'nested2,'
+    'plain_format,'
+    'correct_nested_plain',
+    [('nested1.json',
+      'nested2.json',
+      'plain',
+      'correct_nested_plain'),
+     ('nested1.json',
+      'nested2.yml',
+      'plain',
+      'correct_nested_plain'),
+     ('nested1.yaml',
+      'nested2.yml',
+      'plain',
+      'correct_nested_plain')]
 )
-def test_generate_nested_stylish_diff(nested1, nested2, stylish_format):
-    diff = generate_diff(nested1, nested2, stylish_format)
+def test_generating_nested_plain_diff(nested1,
+                                      nested2,
+                                      plain_format,
+                                      correct_nested_plain):
+    diff = generate_diff(
+        form_path_to_test_file(nested1),
+        form_path_to_test_file(nested2),
+        plain_format
+    )
 
-    with open('./tests/fixtures/correct_nested_stylish', 'r') as file:
+    with open(form_path_to_test_file(correct_nested_plain), 'r') as file:
         correct_structure = file.read()
 
         assert diff == correct_structure
 
 
 @pytest.mark.parametrize(
-    'nested1, nested2, plain_format',
-    [('./tests/fixtures/nested1.json',
-      './tests/fixtures/nested2.json',
-      'plain'),
-     ('./tests/fixtures/nested1.json',
-      './tests/fixtures/nested2.yml',
-      'plain'),
-     ('./tests/fixtures/nested1.yaml',
-      './tests/fixtures/nested2.yml',
-      'plain')]
+    'nested1,'
+    'nested2,'
+    'raw_json_format,'
+    'correct_nested_raw_json',
+    [('nested1.json',
+      'nested2.json',
+      'json',
+      'correct_nested_raw_json'),
+     ('nested1.json',
+      'nested2.yml',
+      'json',
+      'correct_nested_raw_json'),
+     ('nested1.yaml',
+      'nested2.yml',
+      'json',
+      'correct_nested_raw_json')]
 )
-def test_generate_nested_plain_diff(nested1, nested2, plain_format):
-    diff = generate_diff(nested1, nested2, plain_format)
+def test_generating_nested_json_diff(nested1,
+                                     nested2,
+                                     raw_json_format,
+                                     correct_nested_raw_json):
+    diff = generate_diff(
+        form_path_to_test_file(nested1),
+        form_path_to_test_file(nested2),
+        raw_json_format
+    )
 
-    with open('./tests/fixtures/correct_nested_plain', 'r') as file:
-        correct_structure = file.read()
-
-        assert diff == correct_structure
-
-
-@pytest.mark.parametrize(
-    'flat1, flat2, raw_json_format',
-    [('./tests/fixtures/flat1.json',
-      './tests/fixtures/flat2.json',
-      'json')]
-)
-def test_generate_flat_json_diff(flat1, flat2, raw_json_format):
-    diff = generate_diff(flat1, flat2, raw_json_format)
-
-    with open('./tests/fixtures/correct_flat_raw_json', 'r') as file:
-        correct_structure = file.read()
-
-        assert diff == correct_structure
-
-
-@pytest.mark.parametrize(
-    'nested1, nested2, raw_json_format',
-    [('./tests/fixtures/nested1.json',
-      './tests/fixtures/nested2.json',
-      'json'),
-     ('./tests/fixtures/nested1.json',
-      './tests/fixtures/nested2.yml',
-      'json'),
-     ('./tests/fixtures/nested1.yaml',
-      './tests/fixtures/nested2.yml',
-      'json')]
-)
-def test_generate_nested_json_diff(nested1, nested2, raw_json_format):
-    diff = generate_diff(nested1, nested2, raw_json_format)
-
-    with open('./tests/fixtures/correct_nested_raw_json', 'r') as file:
+    with open(form_path_to_test_file(correct_nested_raw_json), 'r') as file:
         correct_structure = file.read()
 
         assert diff == correct_structure
