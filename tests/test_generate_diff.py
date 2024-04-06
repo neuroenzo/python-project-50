@@ -6,7 +6,7 @@ import os
 
 def form_path_to_test_file(file):
     return os.path.abspath(
-        f'fixtures/{file}'
+        f'tests/fixtures/{file}'
     )
 
 
