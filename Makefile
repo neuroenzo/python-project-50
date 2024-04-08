@@ -30,4 +30,4 @@ build: check
 gendiff:
 	poetry run gendiff
 
-.PHONY: install build publish package-install lint test test-coverage selfcheck check  gendiff
+.PHONY: install build publish package-install lint test test-coverage selfcheck check gendiff
