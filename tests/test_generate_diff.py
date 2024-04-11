@@ -4,9 +4,14 @@ from gendiff import generate_diff
 import os
 
 
-def form_path_to_test_file(file):
-    return os.path.abspath(
-        f'tests/fixtures/{file}'
+def form_path_to_test_file(file_name):
+    fixtures_path = os.path.join(
+        os.path.dirname(__file__),
+        'fixtures'
+    )
+    return os.path.join(
+        fixtures_path,
+        file_name
     )
 
 
