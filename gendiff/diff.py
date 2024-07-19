@@ -7,4 +7,3 @@ def generate_diff(first_file, second_file, format_name='stylish'):
     second_source = define_file_type(second_file)
 
     return build_formatter(first_source, second_source, format_name)
-
