@@ -3,11 +3,18 @@ import yaml
 
 from pathlib import Path
 
+from utils.custom_exceptions import FileFormatError
 
-def define_file_type(file_name):
-    with open(file_name) as f:
+
+def get_data(path_to_file):
+    format_name = Path(path_to_file).suffix
+    with open(path_to_file) as f:
         data = f.read()
-    match Path(file_name).suffix:
+        return parse_data(data, format_name)
+
+
+def parse_data(data, format_name):
+    match format_name:
         case '.json':
             return json.loads(data)
         case '.yml' | '.yaml':
