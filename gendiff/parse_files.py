@@ -19,3 +19,4 @@ def parse_data(data, format_name):
             return json.loads(data)
         case '.yml' | '.yaml':
             return yaml.safe_load(data)
+    raise FileFormatError(f'{format_name} is not available format')

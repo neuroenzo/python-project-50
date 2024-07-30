@@ -19,4 +19,4 @@ def build_formatter(first_source, second_source, format_name):
             build_source_tree(first_source, second_source)
         )
     else:
-        raise TypeError(f'{format_name} is not available format')
+        raise FileFormatError(f'{format_name} is not available format')
