@@ -1,20 +1,21 @@
-from .formatters.stylish import make_stylish_formatter
-from .formatters.plain import make_plain_formatter
-from .formatters.json import make_raw_json
+from utils.custom_exceptions import FileFormatError
+from .formatters.stylish import build_stylish
+from .formatters.plain import build_plain
+from .formatters.json import build_raw_json
 from .ast import build_source_tree
 
 
 def build_formatter(first_source, second_source, format_name):
     if format_name == 'stylish':
-        return make_stylish_formatter(
+        return build_stylish(
             build_source_tree(first_source, second_source)
         )
     elif format_name == 'plain':
-        return make_plain_formatter(
+        return build_plain(
             build_source_tree(first_source, second_source)
         )
     elif format_name == 'json':
-        return make_raw_json(
+        return build_raw_json(
             build_source_tree(first_source, second_source)
         )
     else:
