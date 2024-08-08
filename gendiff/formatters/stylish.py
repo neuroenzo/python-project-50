@@ -24,12 +24,14 @@ def build_stylish(source, depth=1):
                 )
             case 'added':
                 result.append(
-                    f"{get_indent(2, depth, item['status'])}{PLUS}{item['key']}:"
+                    f"{get_indent(2, depth, item['status'])}"
+                    f"{PLUS}{item['key']}:"
                     f" {display_like_json(item['value'], depth + 1)}"
                 )
             case 'deleted':
                 result.append(
-                    f"{get_indent(2, depth, item['status'])}{MINUS}{item['key']}:"
+                    f"{get_indent(2, depth, item['status'])}"
+                    f"{MINUS}{item['key']}:"
                     f" {display_like_json(item['value'], depth + 1)}"
                 )
             case 'unchanged':
@@ -39,11 +41,13 @@ def build_stylish(source, depth=1):
                 )
             case 'changed':
                 result.append(
-                    f"{get_indent(2, depth, item['status'])}{MINUS}{item['key']}:"
+                    f"{get_indent(2, depth, item['status'])}"
+                    f"{MINUS}{item['key']}:"
                     f" {display_like_json(item['old value'], depth + 1)}"
                 )
                 result.append(
-                    f"{get_indent(2, depth, item['status'])}{PLUS}{item['key']}:"
+                    f"{get_indent(2, depth, item['status'])}"
+                    f"{PLUS}{item['key']}:"
                     f" {display_like_json(item['new value'], depth + 1)}"
                 )
 
