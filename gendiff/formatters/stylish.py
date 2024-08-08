@@ -66,7 +66,7 @@ def display_like_json(structure, depth):
             result = ['{']
             for key, value in structure.items():
                 result.append(
-                    f'{SEPARATOR * 4 * depth}{key}:'                   
+                    f'{SEPARATOR * 4 * depth}{key}:'                  
                     f' {display_like_json(value, depth + 1)}'
                 )
             result.append(f'{SEPARATOR * 4 * (depth - 1)}}}')
